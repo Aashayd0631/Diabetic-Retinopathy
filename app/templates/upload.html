@@ -1,0 +1,60 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css') }}">
+    <title>Upload</title>
+</head>
+<style>
+  body{
+    background-color: grey;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+  form{
+    text-align: center;
+  }
+</style>
+<body>
+    <h2>Upload Audio File for Diabetic Retinopathy</h2>
+    <form action="upload.html" method="post" enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+
+
+    {% if prediction %}
+    <h2>Prediction Result:</h2>
+    <ul>
+        {% for class_label, probability in prediction.items() %}
+        <li>{{ class_label }}: {{ probability }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/upload.css')}}">
+    <title>Upload</title>
+</head>
+<body>
+    <center><h2>Uploaded Image Analysis for Diabetic Retinopathy Prediction</h2>
+    <form action="{{ url_for('uploaded_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
+    </form>
+    <b>
+    {% if prediction %}
+    <h2>Prediction Result:</h2>
+    <p>Class Label: {{ prediction.class_label }}</p>
+    <p class="probability">Probability: {{ prediction.probability }}</p>
+    {% endif %}</center>
+    </b>
+</body>
+</html>

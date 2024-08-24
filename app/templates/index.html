@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Retinopathy Prediction</title>
+    <link rel = "stylesheet" type="text/css" href="{{url_for('static', filename='css/styles.css') }}">
+</head>
+<style>
+    body{
+        background-color: #8ecae6;
+        font-family: 'Inter', sans-serif;
+
+    }
+
+    h1{
+        text-align: center;
+        background-color: #113242;
+        padding: 20px;
+        align-items: center;
+        text-align: center;
+        color: white;
+        height: 50px;
+        margin-bottom: 50px;
+    }
+    img{
+        height:400px;
+        align-items: center;
+    }
+    form{
+        text-align: center;
+    }
+
+    input[type="submit"]{
+        background-color: lavenderblush;
+        color:black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 20px;
+    }
+
+    input[type="submit"]:hover{
+        background-color: lavender;
+        color: black;
+    }
+    input[type="file"] {
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+</style>
+<body>
+    <h1>Diabetic Retinopathy Prediction</h1>
+    <form action="{{ url_for('uploaded_file') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Upload">
+    </form>
+    <div class="result"></div>
+    <center><img src="../static/images/doc3.png"></center>
+</body>
+</html>
